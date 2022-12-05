@@ -1,4 +1,4 @@
-package solutions
+package day1
 
 import (
 	"competitive_programming/util/reader"

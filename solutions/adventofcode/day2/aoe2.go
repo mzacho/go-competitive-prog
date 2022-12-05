@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func Run_AoC_2(reader reader.FileReader) {
+func Run_AoC(reader reader.FileReader) {
 	var lines [][]string
 	for {
 		s, err := reader.NextLine()
