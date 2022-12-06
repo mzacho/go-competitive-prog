@@ -1,11 +1,11 @@
 package main
 
 import (
-	"competitive_programming/templates"
+	"competitive_programming/solutions/adventofcode/day6"
 	"competitive_programming/util/reader"
 )
 
 func main() {
-	templates.Run_AoC_XX(reader.NewFileReader("input"))
+	day6.Run_AoC(reader.NewFileReader("input"))
 	// solutions.Run_AoC_2(reader.NewFileReader("input"))
 }

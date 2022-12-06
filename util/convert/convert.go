@@ -3,6 +3,7 @@ package convert
 import (
 	"fmt"
 	"strconv"
+	"unicode"
 )
 
 func UnsafeToInt(base int, s string) int {
@@ -24,4 +25,13 @@ func IntToStringWithDefault(i int, default_ string) string {
 		return default_
 	}
 	return fmt.Sprint(i)
+}
+
+// Converts [a-z] to 1..26 and [A-Z] to 27..52
+func RuneToInt(b rune) int {
+	if unicode.IsLower(b) {
+		return int(b) - 96
+	} else {
+		return int(b) - 38
+	}
 }

@@ -34,6 +34,14 @@ func (as Set[T]) Remove(a T) bool {
 	return p
 }
 
+func (as Set[T]) ToList() []T {
+	keys := make([]T, 0, len(as))
+	for k := range as {
+		keys = append(keys, k)
+	}
+	return keys
+}
+
 func (as Set[T]) Union(bs Set[T]) Set[T] {
 	cs := NewSet[T]()
 	for a := range as {
@@ -69,9 +77,9 @@ func (as Set[T]) MutableMinus(bs Set[T]) {
 
 func (as Set[T]) Intersect(bs Set[T]) Set[T] {
 	cs := NewSet[T]()
-	for a := range as {
-		if bs[a] {
-			cs[a] = true
+	for b := range bs {
+		if as[b] {
+			cs[b] = true
 		}
 	}
 	return cs
@@ -79,7 +87,7 @@ func (as Set[T]) Intersect(bs Set[T]) Set[T] {
 
 func (as Set[T]) MutableIntersect(bs Set[T]) {
 	for b := range bs {
-		if !bs[b] {
+		if !as[b] {
 			delete(as, b)
 		}
 	}

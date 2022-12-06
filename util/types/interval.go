@@ -46,3 +46,11 @@ func (x *IntervalSlice) SortByPartitionDescending() {
 		return (*x)[i].Partition > (*x)[j].Partition
 	})
 }
+
+func (x Interval) Contains(y Interval) bool {
+	return x.Start <= y.Start && x.Finish >= y.Finish
+}
+
+func (x Interval) Overlaps(y Interval) bool {
+	return y.Start <= x.Finish && x.Start <= y.Finish
+}

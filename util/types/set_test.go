@@ -116,3 +116,18 @@ func TestMutableSetIntersection(t *testing.T) {
 		t.Errorf("Expected a == a3; was %v", a.Equals(a3))
 	}
 }
+
+func TestMutableSetIntersection2(t *testing.T) {
+	a := types.NewSet(1, 2)
+	a2 := types.NewSet(1, 2)
+	a3 := types.NewSet(1, 2)
+	b := types.NewSet(2, 4)
+
+	a.MutableIntersect(b)
+	a2.MutableMinus(b)
+	a.MutableUnion(a2)
+
+	if !a.Equals(a3) {
+		t.Errorf("Expected a == a3; was %v", a.Equals(a3))
+	}
+}
