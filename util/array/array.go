@@ -1,6 +1,9 @@
 package array
 
-import "competitive_programming/util/types"
+import (
+	"competitive_programming/util/functional"
+	"competitive_programming/util/types"
+)
 
 func Max(a ...int) (idx int, elem int) {
 	for i := 0; i < len(a); i++ {
@@ -20,6 +23,32 @@ func Min(a ...int) (idx int, elem int) {
 		}
 	}
 	return
+}
+
+func Sum(a []int) int {
+	return functional.FoldL(a, 0, functional.PlusInt)
+}
+
+func Contains[T comparable](a []T, t T) bool {
+	return IndexOf(t, a) != -1
+}
+
+func ContainsAny[T comparable](a []T, ts ...T) bool {
+	for i := 0; i < len(ts); i++ {
+		if IndexOf(ts[i], a) != -1 {
+			return true
+		}
+	}
+	return false
+}
+
+func ContainsAll[T comparable](a []T, ts ...T) bool {
+	for i := 0; i < len(ts); i++ {
+		if IndexOf(ts[i], a) == -1 {
+			return false
+		}
+	}
+	return true
 }
 
 func IndexOf[T comparable](t T, l []T) int {
@@ -58,4 +87,28 @@ func Zip[T, R any](a []T, b []R) []types.Pair[T, R] {
 		})
 	}
 	return res
+}
+
+func Fill[T any](a []T, t T) {
+	for i := 0; i < len(a); i++ {
+		a[i] = t
+	}
+}
+
+func FillFun[T any](a []T, f func (int) T) {
+	for i := 0; i < len(a); i++ {
+		a[i] = f(i)
+	}
+}
+
+func Make[T any](t T, n int) []T {
+	a := make([]T, n)
+	Fill(a, t)
+	return a
+}
+
+func MakeFun[T any](f func (int) T, n int) []T {
+	a := make([]T, n)
+	FillFun(a, f)
+	return a
 }

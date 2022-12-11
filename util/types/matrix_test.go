@@ -1,14 +1,14 @@
-package array_test
+package types_test
 
 import (
-	"competitive_programming/util/array"
+	"competitive_programming/util/types"
 	"testing"
 )
 
 func TestDim(t *testing.T) {
 	l1 := []int{1, 2, 3, 4}
 	l2 := []int{5, 6, 7, 8}
-	M := array.Matrix[int]([][]int{l1, l2})
+	M := types.Matrix[int]([][]int{l1, l2})
 	n, m := M.Dim()
 	if n != 2 || m != 4 {
 		t.Errorf("M.Dim() = %v, %v; expected 2, 4", n, m)
@@ -18,7 +18,7 @@ func TestDim(t *testing.T) {
 func TestTranspose(t *testing.T) {
 	l1 := []int{1, 2, 3, 4}
 	l2 := []int{5, 6, 7, 8}
-	M := array.Matrix[int]([][]int{l1, l2})
+	M := types.Matrix[int]([][]int{l1, l2})
 	M.Transpose()
 	n, m := M.Dim()
 	if n != 4 || m != 2 {

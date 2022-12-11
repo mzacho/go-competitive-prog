@@ -2,7 +2,7 @@ package solutions
 
 import (
 	"competitive_programming/util/convert"
-	"competitive_programming/util/math"
+	"competitive_programming/util/mathz"
 	"competitive_programming/util/reader"
 	"fmt"
 	"strings"
@@ -30,11 +30,11 @@ func NonDecN(n int) int {
 			i++
 		} else {
 			res[i] -= 1
-			for k := i+1; k < len(res); k++ {
+			for k := i + 1; k < len(res); k++ {
 				res[k] = 9
 			}
 			i = 0
 		}
 	}
-	return math.Value(res[1:], 10)
+	return mathz.Value(res[1:], 10)
 }

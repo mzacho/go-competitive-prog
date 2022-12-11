@@ -1,4 +1,4 @@
-package math
+package mathz
 
 import (
 	"competitive_programming/util/convert"
@@ -16,4 +16,35 @@ func Value(digits []int, base int) (res int) {
 
 func StrValue(digits []string, base int) (res int) {
 	return Value(functional.Map(digits, functional.Curry(convert.UnsafeToInt)(base)), base)
+}
+
+func AbsInt(x int) int {
+	if x > 0 {
+		return x
+	}
+	return -x
+}
+
+func MinInt(xs ...int) int {
+	var min int
+	set := false
+	for _, x := range xs {
+		if !set || min > x {
+			min = x
+			set = true
+		}
+	}
+	return min
+}
+
+func MaxInt(xs ...int) int {
+	var max int
+	set := false
+	for _, x := range xs {
+		if !set || x > max {
+			max = x
+			set = true
+		}
+	}
+	return max
 }

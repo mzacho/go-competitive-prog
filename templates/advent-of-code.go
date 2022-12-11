@@ -36,7 +36,7 @@ func Run_AoC(reader reader.FileReader) {
 	var fl firstLine
 
 	// Some days the first line needs special attention ...
-	if true {
+	if false {
 		// s, _ := reader.NextLineSplit(",")
 		s, _ := reader.SplitNextIntLine(",")
 		fl = firstLine(s)

@@ -3,6 +3,9 @@ package types
 import "reflect"
 
 type Set[T comparable] map[T]bool
+type IntSet = Set[int]
+type StringSet = Set[string]
+type IntPairSet = Set[IntPair]
 
 func NewSet[T comparable](xs ...T) Set[T] {
 	a := make(Set[T])

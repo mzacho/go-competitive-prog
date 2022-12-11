@@ -10,6 +10,20 @@ func Map[T, R any](a []T, t func(T) R) []R {
 	return r
 }
 
+func FoldL[T, R any](xs []T, y R, f func (T, R) R) R {
+	for i := 0; i < len(xs); i++ {
+		y = f(xs[i], y)
+	}
+	return y
+}
+
+func FoldR[T, R any](xs []T, y R, f func (T, R) R) R {
+	for i := len(xs)-1; i >= 0; i-- {
+		y = f(xs[i], y)
+	}
+	return y
+}
+
 func Curry[T, S, R any](f func(T, S) R) func(T) func(S) R {
 	return func(t T) func(S) R {
 		return func(s S) R {
@@ -28,4 +42,8 @@ func StrSplit(sep string) func(string) []string {
 	return func(s string) []string {
 		return strings.Split(s, sep)
 	}
+}
+
+func PlusInt(x, y int) int {
+	return x + y
 }
